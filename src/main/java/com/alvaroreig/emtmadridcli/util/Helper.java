@@ -20,5 +20,27 @@ public class Helper {
 		}
 		return retorno;
 	}
+	
+	public static void printUsageDirectives(){
+		System.out.println("Usage");
+		System.out.println("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop STOP_NUMBER");
+		System.out.println("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop STOP_NUMBER LINE_NUMBER");
+	}
+	
+	public static void printResultAllLines(IncomingBusList incomingBusList){
+		if (incomingBusList.getArrives() != null) {
+			for (int i = 0; i < incomingBusList.getArrives().size(); i++) {
+				System.out.println(incomingBusList.getArrives().get(i)
+						.getLineId());
+				System.out.println(incomingBusList.getArrives().get(i)
+						.getBusTimeLeft());
+				System.out.println(Helper.secondsToHuman(incomingBusList
+						.getArrives().get(i).getBusTimeLeft()));
+				System.out.println("----");
+			}
+		} else {
+			System.out.println("Something went wrong");
+		}
+	}
 
 }
