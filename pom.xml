@@ -36,6 +36,7 @@
 			<artifactId>json</artifactId>
 			<version>20140107</version>
 		</dependency>
+		
 		<!-- GSON for JSON treatment -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
