@@ -1,5 +1,6 @@
 package com.alvaroreig.emtmadridcli.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IncomingBusList {
@@ -10,12 +11,20 @@ public class IncomingBusList {
 		this.arrives = arrives;
 	}
 
+	public IncomingBusList() {
+		arrives = new ArrayList<IncomingBus>();
+	}
+
 	public List<IncomingBus> getArrives() {
 		return arrives;
 	}
 
 	public void setArrives(List<IncomingBus> arrives) {
 		this.arrives = arrives;
+	}
+	
+	public void addIncomingBus(IncomingBus incomingBus){
+		arrives.add(incomingBus);
 	}
 	
 	

@@ -31,12 +31,8 @@ public class Helper {
 		if (incomingBusList.getArrives() != null) {
 			for (int i = 0; i < incomingBusList.getArrives().size(); i++) {
 				System.out.println(incomingBusList.getArrives().get(i)
-						.getLineId());
-				System.out.println(incomingBusList.getArrives().get(i)
-						.getBusTimeLeft());
-				System.out.println(Helper.secondsToHuman(incomingBusList
-						.getArrives().get(i).getBusTimeLeft()));
-				System.out.println("----");
+						.getLineId() + ": " + Helper.secondsToHuman(incomingBusList
+								.getArrives().get(i).getBusTimeLeft()));
 			}
 		} else {
 			System.out.println("Something went wrong");
