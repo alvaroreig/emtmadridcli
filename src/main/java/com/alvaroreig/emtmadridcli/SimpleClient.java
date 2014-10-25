@@ -23,7 +23,7 @@ public class SimpleClient {
 			System.out.println("----");
 		}
 		}else{
-			System.out.println("Shomething went wrong");
+			System.out.println("Something went wrong");
 		}
 	}
 }
