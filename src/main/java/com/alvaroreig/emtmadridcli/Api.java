@@ -24,10 +24,13 @@ public class Api {
 					.field("cultureInfo", "ES").asJson();
 
 			String json = jsonResponse.getBody().toString();
+			
+			Unirest.shutdown();
 
 			final Gson gson = new Gson();
 			final IncomingBusList stopList = gson.fromJson(json,
 					IncomingBusList.class);
+			
 
 			if (jsonResponse.getCode() == 200) {
 				return stopList;
