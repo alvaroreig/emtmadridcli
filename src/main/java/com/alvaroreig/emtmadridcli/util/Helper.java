@@ -1,9 +1,12 @@
 package com.alvaroreig.emtmadridcli.util;
 
+import java.util.logging.Logger;
+
 public class Helper {
 
 	static final int MAX_SECONDS = 999999;
 	static final int SECONDS_PER_MINUTE = 60;
+	private final static Logger log = Logger.getLogger(Helper.class.getName());
 
 	public static String secondsToHuman(int seconds) {
 
@@ -22,10 +25,10 @@ public class Helper {
 	}
 	
 	public static void printUsageDirectives(){
-		System.out.println("Usage");
-		System.out.println("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop console-pretty STOP_NUMBER");
-		System.out.println("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop console-pretty STOP_NUMBER LINE_NUMBER");
-		System.out.println("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop bare-seconds STOP_NUMBER LINE_NUMBER INSTANCE");
+		log.severe("Usage");
+		log.severe("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop console-pretty STOP_NUMBER");
+		log.severe("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop console-pretty STOP_NUMBER LINE_NUMBER");
+		log.severe("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop bare-seconds STOP_NUMBER LINE_NUMBER INSTANCE");
 	}
 	
 	public static void prettyPrintToConsole(IncomingBusList incomingBusList){
@@ -35,8 +38,6 @@ public class Helper {
 						.getLineId() + ": " + Helper.secondsToHuman(incomingBusList
 								.getArrives().get(i).getBusTimeLeft()));
 			}
-		} else {
-			System.out.println("Something went wrong");
 		}
 	}
 	

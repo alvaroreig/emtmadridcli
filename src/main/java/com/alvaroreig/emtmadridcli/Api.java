@@ -1,5 +1,8 @@
 package com.alvaroreig.emtmadridcli;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.alvaroreig.emtmadridcli.util.Helper;
 import com.alvaroreig.emtmadridcli.util.IncomingBus;
 import com.alvaroreig.emtmadridcli.util.IncomingBusList;
@@ -7,15 +10,19 @@ import com.google.gson.Gson;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class Api {
 	static final String BASE_URL = "https://openbus.emtmadrid.es:9443/emt-proxy-server/last";
 	static final String TIMES_FROM_STOP_URL = "/geo/GetArriveStop.php";
 	static String API_CLIENT_ID;
 	static String API_PASSKEY;
+	private final static Logger log = Logger.getLogger(Api.class.getName());
 
 	/* Returns bus times from stop if 200, null otherwise */
 	public static IncomingBusList getTimesFromStop(int stopCode) {
+		
+		
 		try {
 			HttpResponse<JsonNode> jsonResponse = Unirest
 					.post(BASE_URL + TIMES_FROM_STOP_URL)
@@ -33,12 +40,20 @@ public class Api {
 					IncomingBusList.class);
 
 			if (jsonResponse.getCode() == 200) {
+				log.info("Status 200, returning IncomingBuses");
 				return stopList;
 			} else {
+				log.warning("Status" + jsonResponse.getCode() +  ", returning null");
 				return null;
 			}
 
+		} catch (UnirestException e){
+			log.severe("Error while connecting to API, returning null");
+			e.printStackTrace();
+			return null;
+			
 		} catch (Exception e) {
+			log.severe("Unknown error, returning null");
 			e.printStackTrace();
 			return null;
 		}
@@ -61,13 +76,16 @@ public class Api {
 	}
 
 	public static void main(String[] args) {
+		/*Log to console*/
+		log.setLevel(Level.WARNING);
+		
 		IncomingBusList incomingBusList;
 
 		switch (args.length) {
 			/*This case pretty console returns all bus lines for a bus stop*/
 			/*5 arguments expected: CLIENT_ID, PASSKEY, incomingBusStop, console-pretty, busStop*/
 			case 5: {
-				if ((args[2].equals("incomingBusToStop"))&&(args[3].equals("console-pretty"))) {
+				if ((args[2].equals("incomingBusToStop"))&&(args[3].equals("pretty-console"))) {
 					try {
 						API_CLIENT_ID = args[0];
 						API_PASSKEY = args[1];
@@ -78,12 +96,12 @@ public class Api {
 						break;
 	
 					} catch (NumberFormatException e) {
-						System.out.println("STOP_NUMBER format incorrect");
+						log.severe("STOP_NUMBER format incorrect");
 						Helper.printUsageDirectives();
 						break;
 					}
 				} else {
-					System.out.println("Unrecognized action");
+					log.severe("Unrecognized action");
 					Helper.printUsageDirectives();
 					break;
 				}
@@ -91,7 +109,7 @@ public class Api {
 			/*This case pretty console returns bus for a given line in a given bus stop*/
 			/*6 arguments expected: CLIENT_ID, PASSKEY, incomingBusStop,console-pretty, busStop, busLine*/
 			case 6: {
-				if ((args[2].equals("incomingBusToStop"))&&(args[3].equals("console-pretty"))) {
+				if ((args[2].equals("incomingBusToStop"))&&(args[3].equals("pretty-console"))) {
 					try {
 						API_CLIENT_ID = args[0];
 						API_PASSKEY = args[1];
@@ -104,13 +122,12 @@ public class Api {
 						break;
 	
 					} catch (NumberFormatException e) {
-						System.out
-								.println("STOP_NUMBER or BUS_LINE format incorrect");
+						log.severe("STOP_NUMBER or BUS_LINE format incorrect");
 						Helper.printUsageDirectives();
 						break;
 					}
 				} else {
-					System.out.println("Unrecognized action");
+					log.severe("Unrecognized action");
 					Helper.printUsageDirectives();
 					break;
 				}
@@ -134,13 +151,12 @@ public class Api {
 						break;
 	
 					} catch (NumberFormatException e) {
-						System.out
-								.println("STOP_NUMBER or BUS_LINE format incorrect");
+						log.severe("STOP_NUMBER or BUS_LINE format incorrect");
 						Helper.printUsageDirectives();
 						break;
 					}
 				} else {
-					System.out.println("Unrecognized action");
+					log.severe("Unrecognized action");
 					Helper.printUsageDirectives();
 					break;
 				}
