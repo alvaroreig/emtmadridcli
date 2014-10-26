@@ -17,7 +17,19 @@ Esta librería sólo hace uso de getArriveStop, que devuelve los autobuses que s
 
 ## Funcionalidades en Java
 
-La clase "Api" tiene dos métodos principales. getTimesFromStop(int stopCode) devuelve un IncomingBusList con la información de todos los autobuses que se acercan a una parada. getTimesFromStopSpecificLine(int stopCode, int lineNumber) devuelve la misma información pero filtrando por un número de linea de autobús. La información devuelta por cada autobús está modelada en la clase IncomingBus ( https://github.com/alvaroreig/emtmadridcli/blob/master/src/main/java/com/alvaroreig/emtmadridcli/util/IncomingBus.java ), pero los atributos más relevantes son lineId (línea de autobús) y busTimeLeft (segundos que faltan para la llegada, si está muy lejos la API devuelve 999999, lo que en las marquesinas es representado como +20 min)
+La clase "Api" tiene dos métodos principales:
+
+* getTimesFromStop(int stopCode) devuelve un IncomingBusList con la información de todos los autobuses que se acercan a una parada.
+* getTimesFromStopSpecificLine(int stopCode, int lineNumber) devuelve la misma información pero filtrando por un número de linea de autobús.
+
+La información devuelta por cada autobús está modelada en la clase IncomingBus: 
+
+https://github.com/alvaroreig/emtmadridcli/blob/master/src/main/java/com/alvaroreig/emtmadridcli/util/IncomingBus.java
+
+pero los atributos más relevantes son:
+
+* lineId. Línea a la que pertenece el autobús.
+* busTimeLeft. Segundos que faltan para que el autobús llegue a la llegada. Si está muy lejos la API devuelve 999999, lo que en las marquesinas es representado como +20 min.
 
 ## Funcionalidades a través de la terminal
 
