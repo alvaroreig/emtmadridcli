@@ -13,7 +13,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class Api {
-	static final String BASE_URL = "https://openbus.emtmadrid.es:9443/emt-proxy-server/last";
+	static final String BASE_URL = "https://openbus.emtmadrid.es/emt-proxy-server/last";
 	static final String TIMES_FROM_STOP_URL = "/geo/GetArriveStop.php";
 	static String API_CLIENT_ID;
 	static String API_PASSKEY;
