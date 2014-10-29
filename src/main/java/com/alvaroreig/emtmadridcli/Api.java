@@ -122,6 +122,7 @@ public class Api {
 	
 					} catch (NumberFormatException e) {
 						log.severe("STOP_NUMBER format incorrect");
+						log.severe(e.toString());
 						Helper.printUsageDirectives();
 						break;
 					}
@@ -148,6 +149,7 @@ public class Api {
 	
 					} catch (NumberFormatException e) {
 						log.severe("STOP_NUMBER or BUS_LINE format incorrect");
+						log.severe(e.toString());
 						Helper.printUsageDirectives();
 						break;
 					}
@@ -177,6 +179,7 @@ public class Api {
 	
 					} catch (NumberFormatException e) {
 						log.severe("STOP_NUMBER or BUS_LINE format incorrect");
+						log.severe(e.toString());
 						Helper.printUsageDirectives();
 						break;
 					}
