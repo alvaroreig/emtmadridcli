@@ -26,8 +26,8 @@ public class Helper {
 	
 	public static void printUsageDirectives(){
 		log.severe("Usage");
-		log.severe("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop console-pretty STOP_NUMBER");
-		log.severe("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop console-pretty STOP_NUMBER LINE_NUMBER");
+		log.severe("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop pretty-console STOP_NUMBER");
+		log.severe("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop pretty-console STOP_NUMBER LINE_NUMBER");
 		log.severe("java -jar emtmadridcli.jar API_CLIENT_ID API_PASSKEY incomingBusToStop bare-seconds STOP_NUMBER LINE_NUMBER INSTANCE");
 	}
 	

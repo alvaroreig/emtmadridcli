@@ -89,4 +89,12 @@ Segundos que faltan para que llegue el primer autobus de la linea 32 en la parad
 
 * Pruebas
 * Salida en JSON
-* Pruebas de rendimiento y posible reemplazo de unirest
+* Soporte para proxy
+
+### Changelog
+
+* 1.1
+  * Eliminado unirest por ser un 25% más lento que httpclient puro
+  * Cambiado el puerto de la API
+* 1.0
+  * Versión inicial
