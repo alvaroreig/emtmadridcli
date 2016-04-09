@@ -3,14 +3,14 @@ package com.alvaroreig.emtmadridcli.util;
 public class IncomingBus {
 	private String busId;
 	private int busDistantce;
-	private int latitude;
+	private float latitude;
 	private String destination;
 	private int stopId;
 	private int lineId;
 	private boolean isHead;
 	private int busPositionType;
 	private int busTimeLeft;
-	private int longitude;
+	private float longitude;
 	public String getBusId() {
 		return busId;
 	}
@@ -23,10 +23,10 @@ public class IncomingBus {
 	public void setBusDistantce(int busDistantce) {
 		this.busDistantce = busDistantce;
 	}
-	public int getLatitude() {
+	public float getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(int latitude) {
+	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
 	public String getDestination() {
@@ -65,10 +65,10 @@ public class IncomingBus {
 	public void setBusTimeLeft(int busTimeLeft) {
 		this.busTimeLeft = busTimeLeft;
 	}
-	public int getLongitude() {
+	public float getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(int longitude) {
+	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
 	
